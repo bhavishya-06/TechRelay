@@ -7,6 +7,10 @@ export default defineConfig({
   plugins: [react()],
   assetsInclude: ['**/*.mp4'],
   publicDir: 'public',
+  server: {
+    host: true, // Add this to expose to all network interfaces
+    port: 5173  // Default port, you can change if needed
+  },
   build: {
     assetsDir: 'assets',
     rollupOptions: {
