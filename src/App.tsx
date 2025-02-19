@@ -49,17 +49,22 @@ function App() {
       setWasRefreshed(true);
     }
 
-    // Add keyboard shortcut for admin reset (Ctrl + Alt + R)
+    // Update the keyboard shortcut handler
     const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.ctrlKey && e.altKey && e.key === 'r') {
-        e.preventDefault();
-        setShowAdminReset(true);
+      if (e.ctrlKey && e.altKey && e.key.toLowerCase() === 'r') {
+        e.preventDefault(); // Prevent browser refresh
+        setShowAdminReset(prev => !prev); // Toggle admin reset
       }
     };
 
+    // Add the event listener to the window
     window.addEventListener('keydown', handleKeyDown);
-    return () => window.removeEventListener('keydown', handleKeyDown);
-  }, []);
+
+    // Cleanup
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown);
+    };
+  }, []); // Empty dependency array since we don't use any state/props
 
   // Check if quiz was already taken
   useEffect(() => {

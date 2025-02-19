@@ -6,6 +6,7 @@ export interface TeamData {
   startTime: Date | null;
   endTime: Date | null;
   lifelines: number;
+  usedLifelines?: string[];
 }
 
 export interface QuizData {
