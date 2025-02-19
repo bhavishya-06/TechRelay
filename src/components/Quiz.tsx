@@ -83,15 +83,6 @@ function Quiz({ teamData, quizData, setQuizData, onQuizComplete }: QuizProps) {
     setShowLifelineMessage(true);
   };
 
-  const handleSkipQuestion = () => {
-    if (quizData.currentQuestionIndex < quizData.currentQuestions.length - 1) {
-      setQuizData({
-        ...quizData,
-        currentQuestionIndex: quizData.currentQuestionIndex + 1
-      });
-    }
-  };
-
   const currentQuestion = quizData.currentQuestions[quizData.currentQuestionIndex];
 
   // Add CSS for the message display
